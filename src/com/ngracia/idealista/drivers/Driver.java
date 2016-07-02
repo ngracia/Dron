@@ -44,10 +44,10 @@ public class Driver {
 
             switch (direccion){
                 case Arriba:
-                    urbId = moveArriba(urbObj);
+                    urbId = moverArriba(urbObj);
                     break;
                 case Abajo:
-                    urbId = moveAbajo(urbObj);
+                    urbId = moverAbajo(urbObj);
                     break;
                 case Derecha:
                     urbId = moverDerecha(urbObj);
@@ -63,37 +63,43 @@ public class Driver {
         return urbId;
     }
 
-    private String moveArriba(Urbanizaciones urbObj){
-
+    private String moverArriba(Urbanizaciones urbObj){
         String result = urbObj.getId();
-        String x = String.valueOf(Integer.parseInt(urbObj.getX()) - 1);
-        String y = urbObj.getY();
+        try{
+            String x = String.valueOf(Integer.parseInt(urbObj.getX()) - 1);
+            String y = urbObj.getY();
 
-        if(Integer.parseInt(x) >= 0){
-            if (!esUrbanizacionVisitada(obtenerIdentificadorUrbanizacion(x,y))){
-                marcarVistadaPosicionActual(urbObj);
-                result = obtenerIdentificadorUrbanizacion(x, y);
-                marcarPosicionActual(result);
+            if(Integer.parseInt(x) >= 0){
+                if (!esUrbanizacionVisitada(obtenerIdentificadorUrbanizacion(x,y))){
+                    marcarVistadaPosicionActual(urbObj);
+                    result = obtenerIdentificadorUrbanizacion(x, y);
+                    marcarPosicionActual(result);
+                }
             }
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
 
         return result;
     }
 
-    private String  moveAbajo(Urbanizaciones urbObj){
+    private String  moverAbajo(Urbanizaciones urbObj){
 
         String urbanizacion = urbObj.getId();
-        String x = String.valueOf(Integer.parseInt(urbObj.getX()) + 1);
-        String y = urbObj.getY();
+        try {
+            String x = String.valueOf(Integer.parseInt(urbObj.getX()) + 1);
+            String y = urbObj.getY();
 
-        if(Integer.parseInt(x) < urbanizaciones.length){
-            if (!esUrbanizacionVisitada(obtenerIdentificadorUrbanizacion(x,y))){
-                marcarVistadaPosicionActual(urbObj);
-                urbanizacion = obtenerIdentificadorUrbanizacion(x, y);
-                marcarPosicionActual(urbanizacion);
+            if(Integer.parseInt(x) < urbanizaciones.length){
+                if (!esUrbanizacionVisitada(obtenerIdentificadorUrbanizacion(x,y))){
+                    marcarVistadaPosicionActual(urbObj);
+                    urbanizacion = obtenerIdentificadorUrbanizacion(x, y);
+                    marcarPosicionActual(urbanizacion);
+                }
             }
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
-
         return urbanizacion;
     }
 
@@ -115,51 +121,65 @@ public class Driver {
     }
 
     private String moverIzquierda(Urbanizaciones urbObj) {
-
         String urbanizacion = urbObj.getId();
-        String x = urbObj.getX();
-        String y = String.valueOf(Integer.parseInt(urbObj.getY()) - 1);
+        try {
+            String x = urbObj.getX();
+            String y = String.valueOf(Integer.parseInt(urbObj.getY()) - 1);
 
-        if (Integer.parseInt(y) >= 0) {
-            if (!esUrbanizacionVisitada(obtenerIdentificadorUrbanizacion(x,y))){
-                marcarVistadaPosicionActual(urbObj);
-                urbanizacion = obtenerIdentificadorUrbanizacion(x, y);
-                marcarPosicionActual(urbanizacion);
+            if (Integer.parseInt(y) >= 0) {
+                if (!esUrbanizacionVisitada(obtenerIdentificadorUrbanizacion(x,y))){
+                    marcarVistadaPosicionActual(urbObj);
+                    urbanizacion = obtenerIdentificadorUrbanizacion(x, y);
+                    marcarPosicionActual(urbanizacion);
+                }
             }
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
 
         return urbanizacion;
     }
 
     private void marcarVistadaPosicionActual(Urbanizaciones urbObj){
-        urbObj.setPosicionActual(false);
-        urbObj.setVisitada(true);
+        try{
+            urbObj.setVisitada(true);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     private boolean esUrbanizacionVisitada(String urbId){
         boolean vistada = false;
-        found1: for(int i = 0; i < urbanizaciones.length; i++) {
-            for (int j = 0; j < urbanizaciones.length; j++) {
-                if (urbanizaciones[i][j].getId() == urbId) {
-                    vistada = urbanizaciones[i][j].isVisitada();
-                    break found1;
+        try{
+            found1: for(int i = 0; i < urbanizaciones.length; i++) {
+                for (int j = 0; j < urbanizaciones.length; j++) {
+                    if (urbanizaciones[i][j].getId() == urbId) {
+                        vistada = urbanizaciones[i][j].isVisitada();
+                        break found1;
+                    }
                 }
             }
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
+
         return vistada;
     }
 
    private void marcarPosicionActual(String urbId) {
        Urbanizaciones urb = null;
-       found1:
-       for (int i = 0; i < urbanizaciones.length; i++) {
-           for (int j = 0; j < urbanizaciones.length; j++) {
-               if (urbanizaciones[i][j].getId() == urbId) {
-                   urb = urbanizaciones[i][j];
-                   urb.setPosicionActual(true);
-                   break found1;
+       try{
+           found1:
+           for (int i = 0; i < urbanizaciones.length; i++) {
+               for (int j = 0; j < urbanizaciones.length; j++) {
+                   if (urbanizaciones[i][j].getId() == urbId) {
+                       urb = urbanizaciones[i][j];
+                       break found1;
+                   }
                }
            }
+       }catch (Exception ex){
+           ex.printStackTrace();
        }
    }
 
@@ -167,6 +187,7 @@ public class Driver {
         List<String> listaUrb = new ArrayList<>();
         String urbActual = null;
         int areaTotal = 0;
+
         try{
 
             //Tamaño area n(rango) veces 9
@@ -181,17 +202,15 @@ public class Driver {
             //Establecemos urb origen
             UrbanizacionOrigen urbanizacionOrigen = ArrayUtil.getStartingPoint(rango);
             urbanizaciones[Integer.parseInt(urbanizacionOrigen.getX())][Integer.parseInt(urbanizacionOrigen.getY())].setOrigen(true);
-            urbanizaciones[Integer.parseInt(urbanizacionOrigen.getX())][Integer.parseInt(urbanizacionOrigen.getY())].setPosicionActual(true);
 
             //Obtener urbId actual y guardarlo en mi listas de urb recorridas
             urbActual = obtenerIdentificadorUrbanizacion(urbanizacionOrigen.getX(), urbanizacionOrigen.getY());
             listaUrb.add(urbActual);
 
-            //primer movimiento
+            //movimientos
             EnumDirecciones randomEnumDirecciones = getRandom();
 
             do {
-
                 urbActual = ObtenerAdyacente(urbActual, randomEnumDirecciones);
                 Collections.sort(listaUrb);
                 if(Collections.binarySearch(listaUrb, urbActual) >= 0){

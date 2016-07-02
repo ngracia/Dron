@@ -7,10 +7,8 @@ public class Urbanizaciones {
     private String x;
     private String y;
     private String id;
-    private int rango;
     private boolean origen;
     private boolean visitada;
-    private boolean posicionActual;
 
     public String getX() {return x;}
 
@@ -22,17 +20,9 @@ public class Urbanizaciones {
         this.y = y;
     }
 
-    public String getId() {
-        return id;
-    }
+    public String getId() {return id;}
 
     public void setId(String id) {this.id = id;}
-
-    public int getRango() {return rango;}
-
-    public void setRango(int rango) {
-        this.rango = rango;
-    }
 
     public boolean isVisitada() {return visitada;}
 
@@ -41,10 +31,5 @@ public class Urbanizaciones {
     public boolean isOrigen() {return origen;}
 
     public void setOrigen(boolean origen) {this.origen = origen;}
-
-    public boolean isPosicionActual() {return posicionActual;}
-
-    public void setPosicionActual(boolean posicionActual) {this.posicionActual = posicionActual;}
-
 
 }
