@@ -194,13 +194,13 @@ public class Driver {
             areaTotal = 9 * Integer.parseInt(rango);
 
             //Construimos Matriz
-            urbanizaciones = ArrayUtil.buildArray(rango);
+            urbanizaciones = ArrayUtil.construirMatriz(rango);
 
             //Inicializamos la matriz
-            ArrayUtil.InitializeArray(urbanizaciones);
+            ArrayUtil.InicializarMatriz(urbanizaciones);
 
             //Establecemos urb origen
-            UrbanizacionOrigen urbanizacionOrigen = ArrayUtil.getStartingPoint(rango);
+            UrbanizacionOrigen urbanizacionOrigen = ArrayUtil.obtenerPuntoDePartida(rango);
             urbanizaciones[Integer.parseInt(urbanizacionOrigen.getX())][Integer.parseInt(urbanizacionOrigen.getY())].setOrigen(true);
 
             //Obtener urbId actual y guardarlo en mi listas de urb recorridas

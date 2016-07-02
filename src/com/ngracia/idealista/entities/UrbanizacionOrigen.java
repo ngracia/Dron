@@ -21,11 +21,4 @@ public class UrbanizacionOrigen {
         this.y = y;
     }
 
-    @Override
-    public String toString() {
-        return "StartingPoint{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
-    }
 }

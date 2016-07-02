@@ -7,7 +7,7 @@ import com.ngracia.idealista.entities.Urbanizaciones;
  */
 public class ArrayUtil {
 
-    public static Urbanizaciones[][] buildArray(String rango){
+    public static Urbanizaciones[][] construirMatriz(String rango){
         Urbanizaciones[][] urbanizaciones = null;
 
         try{
@@ -19,7 +19,7 @@ public class ArrayUtil {
         return urbanizaciones;
     }
 
-    public static UrbanizacionOrigen getStartingPoint(String rango){
+    public static UrbanizacionOrigen obtenerPuntoDePartida(String rango){
         UrbanizacionOrigen arrayResultHelper = new UrbanizacionOrigen();
         try{
             arrayResultHelper.setX(rango);
@@ -30,7 +30,7 @@ public class ArrayUtil {
         return arrayResultHelper;
     }
 
-    public static void InitializeArray(Urbanizaciones[][] urbanizaciones){
+    public static void InicializarMatriz(Urbanizaciones[][] urbanizaciones){
         try{
             int urbNumber = 1;
             for(int i = 0; i < urbanizaciones.length ; i++){
