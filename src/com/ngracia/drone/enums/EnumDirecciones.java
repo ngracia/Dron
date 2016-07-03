@@ -1,4 +1,4 @@
-package com.ngracia.idealista.enums;
+package com.ngracia.drone.enums;
 
 /**
  * Created by Nestor Gracia on 01/07/2016.

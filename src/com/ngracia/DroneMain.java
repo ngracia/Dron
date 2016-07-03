@@ -1,7 +1,7 @@
 package com.ngracia;
 
-import com.ngracia.idealista.drivers.Driver;
-import com.ngracia.idealista.entities.DatosTeclado;
+import com.ngracia.drone.drivers.Driver;
+import com.ngracia.drone.entities.DatosTeclado;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,12 +10,12 @@ import java.util.List;
 /**
  * Created by Nestor Gracia on 2/06/2016.
  */
-public class IdealistaMain {
+public class DroneMain {
     public static void main(String [] args) {
         try {
 
-            IdealistaMain idealistaMain = new IdealistaMain();
-            DatosTeclado datosTeclado = idealistaMain.typeData();
+            DroneMain droneMain = new DroneMain();
+            DatosTeclado datosTeclado = droneMain.typeData();
 
             Driver driver = new Driver();
             List<String> listaUrb = driver.obtenerUrbanizaciones(datosTeclado.getX(), datosTeclado.getY(), datosTeclado.getRange());

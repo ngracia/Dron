@@ -1,4 +1,4 @@
-package com.ngracia.idealista.entities;
+package com.ngracia.drone.entities;
 
 /**
  * Created by Nestor Gracia on 2/06/2016.

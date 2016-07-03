@@ -1,6 +1,6 @@
-package com.ngracia.idealista.Utilities;
-import com.ngracia.idealista.entities.UrbanizacionOrigen;
-import com.ngracia.idealista.entities.Urbanizaciones;
+package com.ngracia.drone.Utilities;
+import com.ngracia.drone.entities.UrbanizacionOrigen;
+import com.ngracia.drone.entities.Urbanizaciones;
 
 /**
  * Created by Nestor Gracia on 2/06/2016.

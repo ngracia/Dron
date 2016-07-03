@@ -1,15 +1,15 @@
-package com.ngracia.idealista.drivers;
+package com.ngracia.drone.drivers;
 
-import com.ngracia.idealista.Utilities.ArrayUtil;
-import com.ngracia.idealista.entities.UrbanizacionOrigen;
-import com.ngracia.idealista.entities.Urbanizaciones;
-import com.ngracia.idealista.enums.EnumDirecciones;
+import com.ngracia.drone.Utilities.ArrayUtil;
+import com.ngracia.drone.entities.UrbanizacionOrigen;
+import com.ngracia.drone.entities.Urbanizaciones;
+import com.ngracia.drone.enums.EnumDirecciones;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.ngracia.idealista.enums.EnumDirecciones.getRandom;
+import static com.ngracia.drone.enums.EnumDirecciones.getRandom;
 
 /**
  * Created by Nestor Gracia on 2/06/2016.
